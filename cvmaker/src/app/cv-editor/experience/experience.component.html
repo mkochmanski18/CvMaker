@@ -1,0 +1,106 @@
+<div class="row">
+    <form (ngSubmit)="onSubmit()" [formGroup]="expForm">
+        <button type="button" class="newPosition btn btn-primary" (click)="onAddPosition()">
+            + Nowa pozycja
+        </button>
+        <button class="btn btn-success btn-save" type='submit'>Zapisz</button>
+        
+        <p class="alert alert-success alert-save" *ngIf="saved">
+            Zapisano
+        </p>
+        <p class="changeDisplayingStatus">
+            <input type="checkbox" [checked]="showedDataList.experience" (click)="updateShowedDataList()">
+            Dodaj sekcję do CV
+        </p>
+        <div *ngFor="let position of positionControls; let i = index" class="educationPosition card"
+            formArrayName="positions">
+            <div class="card-header">
+                <div class="header-text">
+                    <span *ngIf="position.value.job&&position.value.company">{{position.value.company}},
+                        {{position.value.job}},</span>
+                    <span *ngIf="!position.value.workplace||!position.value.company">Zakład {{i+1}},</span>
+
+                    <span class="header-worktime"
+                        *ngIf="position.value.workBegin.year&&position.value.workBegin.month&&((position.value.workEnd.year&&position.value.workEnd.month)||position.value.workEnd.tillNow)">
+
+                        <span *ngIf="position.value.workBegin.month<10">0{{position.value.workBegin.month}}</span>
+                        <span *ngIf="position.value.workBegin.month>9">{{position.value.workBegin.month}}</span>
+                        .{{position.value.workBegin.year}} -
+                        <span *ngIf="position.value.workEnd.tillNow">Obecnie</span>
+                        <span *ngIf="position.value.workEnd.year">
+                            <span *ngIf="position.value.workEnd.month<10">0{{position.value.workEnd.month}}</span>
+                            <span *ngIf="position.value.workEnd.month>9">{{position.value.workEnd.month}}</span>
+                            .{{position.value.workEnd.year}}</span>
+                    </span>
+                </div>
+
+                <div>
+                    <button type="button" class="btn" (click)="changeVisibility(i)"
+                        [ngClass]="!positionsVisibility[i].visibility?'btn-outline-success':'btn-outline-warning'">
+                        <span *ngIf="positionsVisibility[i].visibility">Ukryj</span>
+                        <span *ngIf="!positionsVisibility[i].visibility">Pokaż</span>
+                    </button>
+                    <button type="button" class="btn btn-outline-danger" (click)="deletePosition(i)">Usuń
+                    </button>
+                </div>
+
+            </div>
+            <div class="card-body" *ngIf="positionsVisibility[i].visibility" [formGroupName]="i">
+                <div class="edu-group edu-date">
+                    <span>Informacje o Stanowisku</span>
+                    <div class="form-group">
+                        <label for="job" class="form-label">Nazwa Stanowiska</label>
+                        <input type="text" name="job" formControlName="job" class="form-control edu-control"
+                            placeholder="np. Elektronik" />
+                    </div>
+                    <div class="form-group">
+                        <label for="company" class="form-label">Nazwa Przedstiębiorstwa</label>
+                        <input type="text" name="company" formControlName="company" class="form-control  edu-control"
+                            placeholder="np. Zakład ..." />
+                    </div>
+                    <div class="form-group textarea-group">
+                        <label for="description" class="form-label">Opis stanowiska</label>
+                        <textarea type="text" name="description" rows="3" formControlName="description"
+                            class="form-control" placeholder="Twój opis.."></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group edu-date" formGroupName="workBegin">
+                    <span>Rozpoczęcie pracy</span>
+                    <div class="form-group">
+                        <label for="yearBegin" class="form-label">Rok</label>
+                        <input type="number" min="1960" [max]="maxYear" name="yearBegin" formControlName="year"
+                            class="form-control edu-control" title="yearBegin" />
+                    </div>
+                    <div class="form-group">
+                        <label for="monthBegin" class="form-label">Miesiąc</label>
+                        <input type="number" min="1" step="1" max="12" name="monthBegin" formControlName="month"
+                            class="form-control edu-control" title="monthBegin" />
+                    </div>
+                </div>
+                <div class="form-group edu-date" formGroupName="workEnd">
+                    <span>Zakończenie pracy
+                        <div class="edu-checkbox">
+
+                            <input name="tillNow" type="checkbox" formControlName="tillNow" title="tillNow"
+                                (click)="disableEndDate(i)">
+                            <label for="tillNow">Obecnie</label>
+                        </div>
+                    </span>
+                    <div class="form-group">
+                        <label for="yearEnd" class="form-label">Rok</label>
+                        <input type="number" min="1960" [max]="maxYear" name="yearEnd" formControlName="year"
+                            class="form-control edu-control" title="yearEnd" />
+                    </div>
+                    <div class="form-group">
+                        <label for="monthEnd" class="form-label">Miesiąc</label>
+                        <input type="number" min="1" step="1" max="12" name="monthEnd" formControlName="month"
+                            class="form-control edu-control" title="monthEnd" />
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>

@@ -1,0 +1,13 @@
+.card{
+    max-width: 600px;
+    .card-header{
+        display: flex;
+        justify-content: space-between;
+    }
+    .card-body{
+        display: block;
+        span{
+            display: block;
+        }
+    }
+}

@@ -1,0 +1,56 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="sForm">
+    <button type="submit" class="btn btn-success btn-save">Zapisz</button>
+    <span class="alert alert-success alert-save" *ngIf="saved">
+        Zapisano
+    </span>
+    <div class="row">
+        <div class="form-group">
+            <label for="name" class="form-label">Imię</label>
+            <input class="form-control" type="text" id="name" name="name" formControlName="name"
+                placeholder="np. Jan" />
+        </div>
+        <div class="form-group">
+            <label for="surname" class="form-label">Nazwisko</label>
+            <input class="form-control" type="text" id="surname" name="surname" formControlName="surname"
+                placeholder="np. Kowalski" />
+        </div>
+        <div class="form-group">
+            <label for="profession" class="form-label">Tytuł zawodowy</label>
+            <input class="form-control" type="text" id="profession" name="profession" formControlName="profession"
+                placeholder="np. Sprzedawca" />
+        </div>
+        <div class="form-group">
+            <label for="imageSrc" class="form-label">Fotografia</label>
+            <input class="form-control" type="file" id="imageSrc" name="imageSrc" formControlName="imageSrc" />
+        </div>
+        <div class="form-group">
+            <label for="email" class="form-label">Email</label>
+            <input class="form-control" type="text" id="email" name="email" formControlName="email"
+                placeholder="twoj.email@przyklad.domena" />
+        </div>
+        <div class="form-group">
+            <label for="phoneNumber" class="form-label">Numer telefonu</label>
+            <input class="form-control" type="text" id="phoneNumber" name="phoneNumber" formControlName="phoneNumber"
+                placeholder="np. 123123123" />
+        </div>
+        <div class="form-group">
+            <label for="github" class="form-label">Github</label>
+            <input class="form-control" type="text" id="github" formControlName="github" name="github" />
+        </div>
+        <div class="form-group">
+            <label for="linkedin" class="form-label">Linkedin</label>
+            <input class="form-control" type="text" id="linkedin" formControlName="linkedin" name="linkedin" />
+        </div>
+        <div class="form-group">
+            <label for="domicile" class="form-label">Adres zamieszkania</label>
+            <textarea class="form-control" name="domicile" id="domicile" rows="2" formControlName="domicile"
+                placeholder="np. Rzeszów, ul. Ogrodnicza 12"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="birthdate" class="form-label">Data urodzenia</label>
+            <input class="form-control" type="date" id="birthdate" formControlName="birthdate" name="birthdate" />
+        </div>
+
+
+    </div>
+</form>

@@ -1,0 +1,9 @@
+@media print{
+    .navbar{
+        visibility:collapse;
+        display: none;
+    }
+}
+.btn-login{
+    font-size: smaller;
+}

@@ -1,0 +1,42 @@
+<div class="row">
+    <form (ngSubmit)="onSubmit()" [formGroup]="lForm">
+        <button type="button" class="newPosition btn btn-primary" (click)="onAddPosition()">
+            + Nowa pozycja
+        </button>
+        <button class="btn btn-success btn-save" type='submit'>Zapisz</button>
+        <p class="alert alert-success alert-save" *ngIf="saved">
+            Zapisano
+        </p>
+        <p class="changeDisplayingStatus">
+            <input type="checkbox" [checked]="showedDataList.experience" (click)="updateShowedDataList()">
+            Dodaj sekcję do CV
+        </p>
+        <div *ngFor="let position of positionControls; let i = index" class="educationPosition card"
+            formArrayName="positions">
+            <div class="card-header">
+                <div class="header-text">
+                    <span *ngIf="position.value.language">{{position.value.language}},</span>
+                    <span *ngIf="!position.value.language">Język {{i}},</span>
+                    <span *ngIf="position.value.level"> Poziom: {{position.value.masteryLevel}}</span>
+                </div>
+                <button type="button" class="btn btn-outline-danger" (click)="deletePosition(i)">Usuń
+                </button>
+            </div>
+            <div class="card-body" [formGroupName]="i">
+                <div class="form-group">
+                    <input type="text" name="language" formControlName="language" class="form-control edu-control"
+                        placeholder="np. Angielski" />
+                </div>
+                <div class="form-group mastery-group">
+                    <span class="mastery-form-label">Poziom znajomości języka</span>
+
+                    <div class="masteryLevels" *ngFor="let level of mastery">
+                        <input [id]="getRadioIds(i,level)" type="radio" [value]="level" class="btn-check"
+                            formControlName="masteryLevel" id="level">
+                        <label class="btn btn-outline-primary" [for]="getRadioIds(i,level)">{{level}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

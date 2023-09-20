@@ -1,0 +1,23 @@
+.row{
+    .btn-save{
+        margin: 10px;
+        min-width:100px;
+    }
+    .position{
+        margin-top: 10px;
+        max-width: 600px;
+        border: solid 1px rgba(91, 91, 91, 0.49);
+        border-radius: 1em;
+        .card-body{
+            display: flex;
+            .edu-control{
+                width:fit-content;
+            }
+            .delete-btn{
+                width: 70px;
+            }
+        }
+    }
+    
+    
+}

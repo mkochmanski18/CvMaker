@@ -1,0 +1,44 @@
+<div class="row">
+    <form (ngSubmit)="onSubmit()" [formGroup]="sForm">
+        <button type="button" class="newPosition btn btn-primary" (click)="onAddPosition()">
+            + Nowa pozycja
+        </button>
+        <button class="btn btn-success btn-save" type='submit'>Zapisz</button>
+        <span class="alert alert-success alert-save" *ngIf="saved">
+            Zapisano
+        </span>
+        <p class="changeDisplayingStatus">
+            <input type="checkbox" [checked]="showedDataList.experience" (click)="updateShowedDataList()">
+            Dodaj sekcję do CV
+        </p>
+        <div *ngFor="let position of positionControls; let i = index" class="position card" formArrayName="positions">
+            <div class="card-header">
+                <div class="header-text">
+                    <span *ngIf="position.value.name">{{position.value.name}},</span>
+                    <span *ngIf="!position.value.name">Projekt {{i}},</span>
+                </div>
+                <button type="button" class="btn btn-outline-danger" (click)="deletePosition(i)">Usuń
+                </button>
+            </div>
+            <div class="card-body" [formGroupName]="i">
+                <div class="edu-group edu-date">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Nazwa Projektu</label>
+                        <input type="text" id="name" name="name" formControlName="name"
+                            class="form-control edu-control" />
+                    </div>
+                    <div class="form-group">
+                        <label for="technology" class="form-label">Wykorzystane technologie</label>
+                        <input type="text" name="technology" formControlName="technology"
+                            class="form-control edu-control" id="technology" />
+                    </div>
+                    <div class="form-group">
+                        <label for="description" class="form-label">Opis</label>
+                        <textarea name="description" formControlName="description" class="form-control edu-control"
+                            id="description"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

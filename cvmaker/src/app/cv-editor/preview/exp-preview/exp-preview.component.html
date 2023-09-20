@@ -1,0 +1,21 @@
+<div class="data-group" *ngFor="let unit of exp">
+    <div class="single-data">
+        <div class="content">
+            <span class="job">
+                {{unit.job}}
+            </span>
+            <span class="company">
+                {{unit.company}}
+            </span>
+            <span class="description">
+                {{unit.description}}
+            </span>
+        </div>
+        <div class="dates">
+            {{unit.workBegin.year}}-{{unit.workBegin.month|twoDMonth}}
+            -
+            <span *ngIf="!unit.workEnd.tillNow && unit.workEnd.month">{{unit.workEnd.year}}-{{unit.workEnd.month|twoDMonth}}</span>
+            <span *ngIf="unit.workEnd.tillNow">Obecnie</span>
+        </div>
+    </div>
+</div>

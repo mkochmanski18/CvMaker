@@ -1,0 +1,18 @@
+<div class="data-group" *ngFor="let unit of education">
+    <div class="single-data">
+        <div class="content">
+            <span class="studyDirection">
+                {{unit.studyDirection}}, {{unit.title}}
+            </span>
+            <span class="school">
+                {{unit.schoolName}}, {{unit.city}}
+            </span>
+        </div>
+        <div class="dates">
+            {{unit.educationBegin.year}}-{{unit.educationBegin.month|twoDMonth}}
+            -
+            <span *ngIf="!unit.educationEnd.tillNow && unit.educationEnd.month">{{unit.educationEnd.year}}-{{unit.educationEnd.month|twoDMonth}}</span>
+            <span *ngIf="unit.educationEnd.tillNow">Obecnie</span>
+        </div>
+    </div>
+</div>

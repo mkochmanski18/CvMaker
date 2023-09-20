@@ -1,0 +1,25 @@
+.data-group{
+    margin: 10px 0;
+    .single-data{
+        display: flex;
+        position: relative;
+        .content{
+            .job{
+                font-weight: 700;
+                font-size: 14px;
+                display: block;
+            }
+            .company,.description{
+                font-size: x-small;
+                display:block;
+                margin-top: 5px;
+            }
+        }
+        .dates{
+            position: absolute;
+            top:20px;
+            right: 10px;
+            font-size: x-small;
+        }
+    }
+}

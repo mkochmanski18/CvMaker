@@ -1,0 +1,30 @@
+<div class="row">
+  <hr>
+  <ul class="nav" *ngIf="navHideVisibility">
+      <li class="nav-item" *ngFor="let section of topics">
+        <a 
+          class="nav-link active" 
+          [routerLink]="section.name">{{section.text}}
+        </a>
+      </li>
+      <li (click)="print()">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAZUlEQVR4nO3STQqAIBBA4Vl1o35uWB3UrvFiQBfFQKkVhn6rkYF5G0WaVESS+gL/A3TACmykc8Cit6yALp4yWwGt5+iB0c/OCuQagCk83ggclBOQ699XS+AsNiCxPgvcVV6gEW8HCU91VxfTMNgAAAAASUVORK5CYII=">
+  </ul>
+  <div class="nav-line">
+    <hr>
+    <button 
+      class="hide btn btn-secondary"
+      (click)="navHideVisibility=!navHideVisibility">
+      <span *ngIf="navHideVisibility"><</span>
+      <span *ngIf="!navHideVisibility">></span>
+    </button> 
+  </div>
+  <div class="editor-block">
+    <div class="editor-content">
+      <router-outlet></router-outlet>
+    </div>
+    <div class="editor-preview">
+      <app-preview></app-preview>
+    </div>
+  </div>
+</div>

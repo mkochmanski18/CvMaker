@@ -1,0 +1,9 @@
+<div class="row">
+    <button class="btn btn-success" (click)="onSave()">Zapisz</button>
+    <span class="alert alert-success" *ngIf="saved">
+        Zapisano
+    </span>
+    <label for="description" class="form-label"></label>
+    <textarea class="form-control" name="description" id="description" cols="3" placeholder="Miejsce na opis kandydata"
+        [(ngModel)]="text"></textarea>
+</div>

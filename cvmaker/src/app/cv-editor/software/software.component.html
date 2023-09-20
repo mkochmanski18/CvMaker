@@ -1,0 +1,26 @@
+<div class="row">
+    <form (ngSubmit)="onSubmit()" [formGroup]="sForm">
+        <button type="button" class="newPosition btn btn-primary" (click)="onAddPosition()">
+            + Nowa pozycja
+        </button>
+        <button class="btn btn-success btn-save" type='submit'>Zapisz</button>
+        <p class="alert alert-success alert-save" *ngIf="saved">
+            Zapisano
+        </p>
+        <p class="changeDisplayingStatus">
+            <input type="checkbox" [checked]="showedDataList.software" (click)="updateShowedDataList()">
+            Dodaj sekcję do CV
+        </p>
+        
+        <div *ngFor="let position of positionControls; let i = index" class="position card" formArrayName="positions">
+            
+            <div class="card-body" [formGroupName]="i">
+
+                <input type="text" name="software" formControlName="software" class="form-control edu-control"
+                    placeholder="np. Python" />
+                    <button type="button" class="btn btn-outline-danger delete-btn" (click)="deletePosition(i)">Usuń
+                    </button>
+            </div>
+        </div>
+    </form>
+</div>

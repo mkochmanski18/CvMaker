@@ -1,0 +1,72 @@
+<div class="card">
+    
+    <div class="card-body">
+        <div class="main-block" *ngIf="cvData.userdata">
+            <span class="name">
+                {{cvData.userdata.name}} {{cvData.userdata.surname}}
+            </span>
+            <span class="description">
+                {{cvData.description}}
+            </span>
+            <div class="userdata">
+                <span class="header">
+                    dane osobowe
+                    <hr>
+                </span>
+                <app-userdata-preview [userdata]="cvData.userdata"></app-userdata-preview>
+            </div>
+            <div class="education">
+                <span class="header">
+                    Wykształcenie
+                    <hr>
+                </span>
+                <app-education-preview [education]="cvData.education"></app-education-preview>
+            </div>
+            <div class="experience" *ngIf="showedDataList.experience">
+                <span class="header">
+                    doświadczenie
+                    <hr>
+                </span>
+                <app-exp-preview [exp]="cvData.experience"></app-exp-preview>
+            </div>
+            <div class="software" *ngIf="showedDataList.software">
+                <span class="header">
+                    technologie
+                    <hr>
+                </span>
+                <app-software-preview [software]="cvData.software"></app-software-preview>
+            </div>
+            <div class="projects" *ngIf="showedDataList.projects">
+                <span class="header">
+                    projekty
+                    <hr>
+                </span>
+                <app-projects-preview [projects]="cvData.projects"></app-projects-preview>
+            </div>
+            <div class="certificates" *ngIf="showedDataList.certificates">
+                <span class="header">
+                    certyfikaty
+                    <hr>
+                </span>
+                <app-certificate-preview [certificates]="cvData.certificates"></app-certificate-preview>
+            </div>
+            <div class="language" *ngIf="showedDataList.languages">
+                <span class="header">
+                    znajomość języków
+                    <hr>
+                </span>
+                <app-language-preview [language]="cvData.foreignLanguages"></app-language-preview>
+            </div>
+            <div class="interest" *ngIf="showedDataList.interest">
+                <span class="header">
+                    zainteresowania
+                    <hr>
+                </span>
+                <app-interest-preview [interest]="cvData.interest"></app-interest-preview>
+            </div>
+            <div class="clousure">
+                <app-clousure-preview [clousure]="cvData.clousure"></app-clousure-preview>
+            </div>
+        </div>
+    </div>
+</div>

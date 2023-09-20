@@ -1,0 +1,88 @@
+.row{
+    padding-bottom: 20px;
+    .btn-save{
+        margin: 10px;
+        min-width:100px;
+    }
+    .alert-save{
+        padding: 8px;
+        top:2px;
+    }
+    .educationPosition{
+        margin-top: 10px;
+        max-width: 600px;
+        border: solid 1px rgba(91, 91, 91, 0.49);
+        border-radius: 1em;
+        .card-header{
+            display: flex;
+            justify-content: space-between;
+            .btn{
+                font-size:smaller;
+            }
+            .btn-hide{
+                transform: rotate(120deg);
+            }
+            span{
+                margin: auto;
+            }
+            .header-text{
+                display:inline-block;
+                margin-top: 5px;
+                .header-worktime{
+                    margin-left: 5px;
+                }
+            }
+
+        }
+        .edu-control{
+            max-width: 400px;
+            min-width: calc(50%*vw);
+        }
+        textarea{
+            width: 100%;
+            margin: 0;
+        }
+        .edu-group{
+            display: flex;
+            flex-wrap: wrap;
+            align-content: space-around;
+            justify-content: center;
+            gap:10px;
+        }
+        .edu-date{
+            position: relative;
+            border: solid 1px rgba(91, 91, 91, 0.186);
+            border-radius: 1em;
+            padding: 20px;
+            padding-bottom: 15px;
+            display: flex;
+            justify-content: center;
+            margin: 10px;
+            span{
+                display: flex;
+                position: absolute;
+                top:10px;
+                left: 40px;
+                font-size:small;
+                color:#0b0035d1;
+                .edu-checkbox{
+                    display: flex;
+                    gap: 5px;
+                    padding: 2px;
+                    margin: 0 10px;
+                }
+            }
+        }
+        .textarea-group{
+            width: 90%;
+        }
+        .form-group{
+            margin-top: 10px;
+            gap:10px;
+            label{
+                font-size:x-small;
+            }
+        }
+    }
+    
+}

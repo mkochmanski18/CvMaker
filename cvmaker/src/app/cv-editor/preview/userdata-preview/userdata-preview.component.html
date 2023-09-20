@@ -1,0 +1,38 @@
+<div class="data-group">
+    <div class="single-data" *ngIf="userdata.email">
+        <span class="header">
+            email
+        </span>
+        {{userdata.email}}
+    </div>
+    <div class="single-data" *ngIf="userdata.phoneNumber">
+        <span class="header">
+            numer telefonu
+        </span>
+        {{userdata.phoneNumber}}
+    </div>
+    <div class="single-data" *ngIf="userdata.birthdate">
+        <span class="header">
+            data urodzenia
+        </span>
+        {{userdata.birthdate|date:'dd-MM-y'}}
+    </div>
+    <div class="single-data" *ngIf="userdata.domicile">
+        <span class="header">
+            adres
+        </span>
+        {{userdata.domicile}}
+    </div>
+    <div class="single-data" *ngIf="userdata.github">
+        <span class="header">
+            github
+        </span>
+        {{userdata.github}}
+    </div>
+    <div class="single-data" *ngIf="userdata.linkedin">
+        <span class="header">
+            linkedin
+        </span>
+        {{userdata.linkedin}}
+    </div>
+</div>

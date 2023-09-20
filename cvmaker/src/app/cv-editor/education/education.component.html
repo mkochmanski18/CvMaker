@@ -1,0 +1,100 @@
+<div class="row">
+    <form (ngSubmit)="onSubmit()" [formGroup]="eduForm">
+        <button type="button" class="newPosition btn btn-primary" (click)="onAddPosition()">
+            + Nowa pozycja
+        </button>
+        <button class="btn btn-success btn-save" type='submit'>Zapisz</button>
+        <span class="alert alert-success alert-save" *ngIf="saved">
+            Zapisano
+        </span>
+        <div *ngFor="let position of positionControls; let i = index" class="educationPosition card"
+            formArrayName="positions">
+            <div class="card-header">
+                <div class="header-text">
+                    <span *ngIf="position.value.schoolName">{{position.value.schoolName}},</span>
+                    <span *ngIf="!position.value.schoolName">Szkoła/Uczelnia {{i+1}},</span>
+                    <span class="header-worktime"
+                        *ngIf="position.value.educationBegin.year&&position.value.educationBegin.month&&(position.value.educationEnd.year&&position.value.educationEnd.month)||position.value.educationEnd.tillNow">
+                        {{position.value.educationBegin.month|twoDMonth}}.{{position.value.educationBegin.year}} -
+                        <span *ngIf="position.value.educationEnd.tillNow">Obecnie</span>
+                        <span *ngIf="position.value.educationEnd.year">
+                            {{position.value.educationEnd.month|twoDMonth}}.{{position.value.educationEnd.year}}
+                        </span>
+                    </span>
+                </div>
+
+                <div>
+                    <button type="button" class="btn" (click)="changeVisibility(i)"
+                        [ngClass]="!positionsVisibility[i].visibility?'btn-outline-success':'btn-outline-warning'">
+                        <span *ngIf="positionsVisibility[i].visibility">Ukryj</span>
+                        <span *ngIf="!positionsVisibility[i].visibility">Pokaż</span>
+                    </button>
+                    <button type="button" class="btn btn-outline-danger" (click)="deletePosition(i)">Usuń
+                    </button>
+                </div>
+
+            </div>
+            <div class="card-body" *ngIf="positionsVisibility[i].visibility" [formGroupName]="i">
+                <div class="edu-group edu-date">
+                    <span>Uczelnia</span>
+                    <div class="form-group">
+                        <label for="studyDirection" class="form-label">Kierunek nauki</label>
+                        <input type="text" name="studyDirection" formControlName="studyDirection"
+                            class="form-control edu-control" placeholder="np. Elektronika" />
+                    </div>
+                    <div class="form-group">
+                        <label for="title" class="form-label">Uzyskany Tytuł</label>
+                        <input type="text" name="title" formControlName="title" class="form-control  edu-control"
+                            placeholder="np. Elektronik" />
+                    </div>
+                    <div class="form-group">
+                        <label for="schoolName" class="form-label">Nazwa szkoły</label>
+                        <input type="text" name="schoolName" formControlName="schoolName"
+                            class="form-control edu-control" placeholder="np. ZSZ JakasTam" />
+                    </div>
+                    <div class="form-group">
+                        <label for="city" class="form-label">Miasto</label>
+                        <input type="text" name="city" formControlName="city" class="form-control  edu-control"
+                            placeholder="np. Krosno" />
+                    </div>
+                </div>
+
+                <div class="form-group edu-date" formGroupName="educationBegin">
+                    <span>Rozpoczęcie nauki</span>
+                    <div class="form-group">
+                        <label for="yearBegin" class="form-label">Rok</label>
+                        <input type="number" min="1960" [max]="maxYear" name="yearBegin" formControlName="year"
+                            class="form-control edu-control" title="yearBegin" />
+                    </div>
+                    <div class="form-group">
+                        <label for="monthBegin" class="form-label">Miesiąc</label>
+                        <input type="number" min="1" step="1" max="12" name="monthBegin" formControlName="month"
+                            class="form-control edu-control" title="monthBegin" />
+                    </div>
+                </div>
+                <div class="form-group edu-date" formGroupName="educationEnd">
+                    <span>Zakończenie nauki
+                        <div class="edu-checkbox">
+
+                            <input name="tillNow" type="checkbox" formControlName="tillNow" title="tillNow"
+                                (click)="disableEndDate(i)">
+                            <label for="tillNow">Obecnie</label>
+                        </div>
+                    </span>
+                    <div class="form-group">
+                        <label for="yearEnd" class="form-label">Rok</label>
+                        <input type="number" min="1960" [max]="maxYear" name="yearEnd" formControlName="year"
+                            class="form-control edu-control" title="yearEnd" />
+                    </div>
+                    <div class="form-group">
+                        <label for="monthEnd" class="form-label">Miesiąc</label>
+                        <input type="number" min="1" step="1" max="12" name="monthEnd" formControlName="month"
+                            class="form-control edu-control" title="monthEnd" />
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>

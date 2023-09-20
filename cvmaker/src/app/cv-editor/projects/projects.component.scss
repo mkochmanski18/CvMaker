@@ -1,0 +1,20 @@
+.row{
+    padding-bottom: 20px;
+    .btn-save{
+        margin: 10px;
+        min-width:100px;
+    }
+    .card-header{
+        display:flex;
+        position: relative;
+        height: 3.5em;
+        .header-text{
+            margin: auto 10px;
+        }
+        button{
+            position: absolute;
+            right: 10px;
+        }
+    }
+    
+}

@@ -1,0 +1,38 @@
+.row{
+    padding: 10px;
+
+    .new-cv-card{
+        width: 100%;
+        padding: 0;
+       
+        .card-body{
+            position: relative;
+            input{
+                padding:10px;
+                outline: none;
+            }
+            button{
+                padding: auto 5px;
+                height: 45px;
+                margin: 0 5px;
+                position: absolute;
+                top:18px;
+            }
+        }
+    }
+
+    .cv-list-block{
+        width: 100%;
+        .block-header{
+            width: 100%;
+            margin: 10px 0;
+            display: inline-flex;
+            justify-content: space-between;
+        }
+        .noCvBlock{
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+    }
+}
